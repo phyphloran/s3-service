@@ -1,1 +1,52 @@
+name: workflow
 
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: self-hosted
+    environment: production
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: docker build -t s3-service:latest .
+
+  deploy:
+    needs: build
+    runs-on: self-hosted
+    environment: production
+    steps:
+      - name: Stop old container if exists
+        run: |
+          if docker ps -a --format '{{.Names}}' | grep -Eq '^s3-service'; then
+            docker stop s3-service
+            docker rm s3-service
+          fi
+
+      - name: Run new container
+        run: |
+          docker run -d \
+            --name s3-service \
+            --restart unless-stopped \
+            -e ACCESS_KEY="${{ secrets.ACCESS_KEY }}" \
+            -e BUCKET_NAME="${{ secrets.BUCKET_NAME }}" \
+            -e MAX_FILE_SIZE="${{ secrets.MAX_FILE_SIZE }}" \
+            -e MINIO_IP="${{ secrets.MINIO_IP }}" \
+            -e MINIO_PORT="${{ secrets.MINIO_PORT }}" \
+            -e PHOTO_FOLDER="${{ secrets.PHOTO_FOLDER }}" \
+            -e SECRET_KEY="${{ secrets.SECRET_KEY }}" \
+            -e SECURE="${{ secrets.SECURE }}" \
+            -p 8080:8080 \
+            s3-service:latest
+
+      - name: Check container logs
+        run: docker logs s3-service --tail 50
+
+      - name: Remove unused Docker images
+        run: |
+          docker image prune -f
