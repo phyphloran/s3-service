@@ -1,14 +1,15 @@
 package s3_service.Services;
 
+
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.multipart.MultipartFile;
 import s3_service.Annotations.ValidImage;
-
 import javax.imageio.ImageIO;
 import java.io.IOException;
 import java.util.Set;
+
 
 public class ImageFileValidator implements ConstraintValidator<ValidImage, MultipartFile> {
 
@@ -19,12 +20,14 @@ public class ImageFileValidator implements ConstraintValidator<ValidImage, Multi
             "image/jpeg",
             "image/jpg",
             "image/png",
-            "image/webp",
-            "image/gif",
-            "image/bmp",
+            "image/bmp"
+
+            // TODO
+            /*"image/webp",
             "image/tiff",
             "image/heic",
-            "image/heif"
+            "image/gif",
+            "image/heif"*/
     );
 
     @Override
