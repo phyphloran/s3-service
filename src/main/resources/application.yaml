@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: s3-service
+  servlet:
+    multipart:
+      max-file-size: ${MAX_FILE_SIZE}
+
+s3:
+  ip: ${MINIO_IP}
+  port: ${MINIO_PORT}
+  access-key: ${ACCESS_KEY}
+  secret-key: ${SECRET_KEY}
+  bucket-name: ${BUCKET_NAME}
+  photo-folder: ${PHOTO_FOLDER}
+  secure: ${SECURE}
