@@ -5,6 +5,16 @@ spring:
     multipart:
       max-file-size: ${MAX_FILE_SIZE}
 
+management:
+  endpoint:
+    health:
+      show-details: always
+      show-components: always
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus,env
+
 s3:
   ip: ${MINIO_IP}
   port: ${MINIO_PORT}
