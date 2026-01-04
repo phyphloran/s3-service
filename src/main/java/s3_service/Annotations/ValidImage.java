@@ -3,7 +3,7 @@ package s3_service.Annotations;
 
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
-import s3_service.Services.ImageFileValidator;
+import s3_service.Annotations.Impl.ImageFileValidator;
 import java.lang.annotation.*;
 
 
