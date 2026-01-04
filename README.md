@@ -4,13 +4,13 @@
 
 ## 🚀 Features
 
-- ✅ Upload images to an S3-compatible storage (MinIO)  
-- ✅ File validation: type, size, integrity  
-- ✅ Custom annotations for convenient validation  
-- ✅ Generation of unique file names (UUID)  
-- ✅ Full monitoring via Spring Boot Actuator  
-- ✅ Supported formats: JPEG, JPG, PNG, BMP  
-- ✅ HTTPS/HTTP support for public links  
+- Upload images to an S3-compatible storage (MinIO)  
+- File validation: type, size, integrity  
+- Custom annotations for convenient validation  
+- Generation of unique file names (UUID)  
+- Full monitoring via Spring Boot Actuator  
+- Supported formats: JPEG, JPG, PNG, BMP  
+- HTTPS/HTTP support for public links  
 
 ---
 
