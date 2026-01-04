@@ -33,6 +33,7 @@ jobs:
           docker run -d \
             --name s3-service \
             --restart unless-stopped \
+            --memory=750m \
             -e ACCESS_KEY="${{ secrets.ACCESS_KEY }}" \
             -e BUCKET_NAME="${{ secrets.BUCKET_NAME }}" \
             -e MAX_FILE_SIZE="${{ secrets.MAX_FILE_SIZE }}" \
