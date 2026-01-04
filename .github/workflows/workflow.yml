@@ -13,8 +13,17 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Build Docker image
-        run: docker build -t s3-service:latest .
+      - name: Build Docker image with cache
+        run: |
+          # Check if image already exists
+          if docker image inspect s3-service:latest > /dev/null 2>&1; then
+            echo "✅ Image s3-service:latest already exists, using cache"
+            # Use existing image as cache
+            docker build --cache-from s3-service:latest -t s3-service:latest .
+          else
+            echo "🔄 Image not found, building from scratch"
+            docker build -t s3-service:latest .
+          fi
 
   deploy:
     needs: build
