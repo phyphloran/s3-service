@@ -48,10 +48,5 @@ The project follows a layered architecture with separation of concerns:
 | **Annotations & Validation**  | Custom image validators (`@ValidImage`)             |
 | **Integration with S3/MinIO** | Upload and store images in S3-compatible storage    |
 | **Monitoring & Logging**      | Spring Boot Actuator & SLF4J for metrics and logs   |
-
-<p align="center">
-  <img src="https://github.com/phyphloran/s3-service/blob/main/architecture.png" alt="Project Architecture" width="700"/>
-  <br>
-  <em>Figure: Project Architecture Overview</em>
-</p>
+| **Architecture Diagram**      | <p align="center"><img src="https://github.com/phyphloran/s3-service/blob/main/architecture.png" alt="Project Architecture" width="700"/><br><em>Figure: Project Architecture Overview</em></p> |
 
