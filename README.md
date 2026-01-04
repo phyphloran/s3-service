@@ -41,10 +41,17 @@ The project includes an automated CI/CD pipeline that builds and deploys the ser
 
 The project follows a layered architecture with separation of concerns:
 
-- **Controller Layer** – handles HTTP requests and responses  
-- **Service Layer** – business logic for photo handling  
-- **Annotations & Validation** – custom image validators  
-- **Integration with S3/MinIO** – upload and store images  
-- **Monitoring & Logging** – via Spring Boot Actuator and SLF4J  
+| Layer / Component            | Description                                           |
+|-------------------------------|------------------------------------------------------|
+| **Controller Layer**          | Handles HTTP requests and responses                 |
+| **Service Layer**             | Business logic for photo handling                   |
+| **Annotations & Validation**  | Custom image validators (`@ValidImage`)             |
+| **Integration with S3/MinIO** | Upload and store images in S3-compatible storage    |
+| **Monitoring & Logging**      | Spring Boot Actuator & SLF4J for metrics and logs   |
 
-![Project Architecture](https://github.com/phyphloran/s3-service/blob/main/architecture.png)
+<p align="center">
+  <img src="https://github.com/phyphloran/s3-service/blob/main/architecture.png" alt="Project Architecture" width="700"/>
+  <br>
+  <em>Figure: Project Architecture Overview</em>
+</p>
+
